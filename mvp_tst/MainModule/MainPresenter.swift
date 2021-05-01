@@ -17,7 +17,7 @@ protocol MainViewPresenterProtocol: class {
 }
 
 class MainPresenter: MainViewPresenterProtocol {
-    var view: MainViewProtocol
+    weak var view: MainViewProtocol?
     let person: Person
     
     required init(view: MainViewProtocol, person: Person) {//Правильно прокидывать зависимости ч.з. инициализатор(Инекция зависимостей)
@@ -27,6 +27,6 @@ class MainPresenter: MainViewPresenterProtocol {
     
     func showGreeting() {
         let greeting = "Hello, " + person.name + " " + person.surname + "!!!"
-        view.setGreeting(greeting: greeting)
+        view?.setGreeting(greeting: greeting)
     }
 }
